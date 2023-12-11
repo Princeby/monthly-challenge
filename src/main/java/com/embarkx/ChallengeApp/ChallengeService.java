@@ -29,9 +29,9 @@ public class ChallengeService {
         }
     }
 
-    public Challenge getChallenge(String month) {
+    public Challenge getChallenge(Long id) {
         for (Challenge challenge: challenges) {
-            if (challenge.getMonth().equalsIgnoreCase(month)){
+            if (challenge.getId().equals(id)){
                 return challenge;
             }
         }
@@ -47,5 +47,9 @@ public class ChallengeService {
             }
         }
         return false;
+    }
+
+    public boolean deleteChallenge(Long id) {
+        return challenges.removeIf(challenge -> challenge.getId().equals(id));
     }
 }
